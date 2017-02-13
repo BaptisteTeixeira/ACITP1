@@ -78,27 +78,16 @@ int main(int argc, char *argv[]){
        newsockfd - id do socket que comunica com este cliente */
     client_addr_length = sizeof(cli_addr);
     newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &client_addr_length);
-	write_client(newsockfd, "welcome");
+	//write_client(newsockfd, "welcome");
 	
-	//char *message=readline(newsockfd);
-	while(1){
 	
+	while(strstr(buf,"\n")==NULL){
 	// Por algum motivo recv so recebe 6 bytes
 	int len=recv(newsockfd,buf,strlen(buf),0);
-		//procura o \n para saber que a mensagem acabou
-		if(strstr(buf,"\n")!=NULL){
-			printf(" A mensagem Acabou e é %s \n", aux);
-			strcpy(aux, "");
-		}
-		//adicio
-		if(len==6){
-			strcat(aux, buf);
-		}
 	printf("%s, recebidos %d bytes\n", buf, len);
-	
 	}
 	
-	
+	write_client(newsockfd, buf);
 	
 	
 	//free(message);
