@@ -42,9 +42,9 @@ int main(void){
 	}
 
 	while(1){
-		/*printf("Mensagem a ser enviada: ");
+		printf("Mensagem a ser enviada: ");
 		scanf("%s", buf);
-		len=write(sockfd,buf,strlen(buf));*/
+		len=send(sockfd,buf,strlen(buf),0);
 
 		len=recv(sockfd,buf,BUF_LEN,0);
 		printf("resposta do servidor : %s\n", buf);
