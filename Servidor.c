@@ -84,9 +84,10 @@ int main(int argc, char *argv[]){
 
 
 	while(1){
-		strcpy(buf,"Carlos Eduardo Santos Almeida\n");
+		recv(newsockfd,buf,sizeof(buf),0);
+		
 		send(newsockfd,buf,sizeof(buf),0);
-
+		memset(buf, '\0', sizeof(buf));
 	}
 
 
